@@ -12,9 +12,6 @@
     <connection>
       scm:git:https://github.com/Rensom/DevOpsTestRepo.git
     </connection>
-    <url>
-      https://github.com/Rensom/DevOpsTestRepo.git
-    </url>
   </scm>
 
   <dependencies>
