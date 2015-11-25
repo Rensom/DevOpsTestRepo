@@ -48,7 +48,7 @@
         DevOps test Nexus Repo
       </name>
       <url>
-        http://localhost:9081/nexus/repositories/DevOpsTestNRepo/
+        http://localhost:9081/nexus/content/repositories/DevOps_Test_NRepo/
       </url>
     </repository>
   </distributionManagement>
