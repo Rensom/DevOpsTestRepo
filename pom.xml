@@ -44,15 +44,8 @@
 
   <distributionManagement>
     <repository>
-      <id>
-        DevOpsNexusRelease
-      </id>
-      <name>
-        DevOps Nexus Release Repo
-      </name>
-      <url>
-        http://localhost:9081/nexus/content/repositories/DevOpsNexusRelease/
-      </url>
+      <id>DevOpsNexusRelease</id>
+      <url>http://localhost:9081/nexus/content/repositories/DevOpsNexusRelease</url>
     </repository>
   </distributionManagement>
 
