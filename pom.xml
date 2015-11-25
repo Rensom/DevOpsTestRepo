@@ -45,13 +45,13 @@
   <distributionManagement>
     <repository>
       <id>
-        DevOps_Test_NRepo
+        DevOpsNexusRelease
       </id>
       <name>
-        DevOps test Nexus Repo
+        DevOps Nexus Release Repo
       </name>
       <url>
-        http://localhost:9081/nexus/content/repositories/DevOps_Test_NRepo/
+        http://localhost:9081/nexus/content/repositories/DevOpsNexusRelease/
       </url>
     </repository>
   </distributionManagement>
