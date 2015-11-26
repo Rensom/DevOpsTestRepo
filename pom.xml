@@ -9,10 +9,10 @@
 
   <scm>
     <connection>
-      scm:git:https://github.com/Rensom/DevOpsTestRepo.git
+      scm:git:git@github.com:Rensom/DevOpsTestRepo.git
     </connection>
     <url>
-      https://github.com/Rensom/DevOpsTestRepo.git
+      git@github.com:Rensom/DevOpsTestRepo.git
     </url>
 	<developerConnection>
 	  scm:git:git@github.com:Rensom/DevOpsTestRepo.git
