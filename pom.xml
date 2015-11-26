@@ -15,7 +15,7 @@
       https://github.com/Rensom/DevOpsTestRepo.git
     </url>
 	<developerConnection>
-	  scm:git:https://Rensom@github.com:Rensom/DevOpsTestRepo.git
+	  scm:git:git@github.com:Rensom/DevOpsTestRepo.git
 	</developerConnection>
   </scm>
 
