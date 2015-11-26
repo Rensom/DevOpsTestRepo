@@ -17,6 +17,7 @@
 	<developerConnection>
 	  scm:git:git@github.com:Rensom/DevOpsTestRepo.git
 	</developerConnection>
+	<tag>HEAD</tag>
   </scm>
 
   <dependencies>
