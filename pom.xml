@@ -66,6 +66,11 @@
 		    <tagNameFormat>v@{project.version}</tagNameFormat> 
             <autoVersionSubmodules>true</autoVersionSubmodules>
 			<pushChanges>false</pushChanges>
+			<checkModificationExcludes>
+              <checkModificationExclude>
+                target/*
+              </checkModificationExclude>
+            </checkModificationExcludes>
           </configuration>
         </plugin>
 		
