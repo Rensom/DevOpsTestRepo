@@ -66,7 +66,6 @@
 		    <tagNameFormat>v@{project.version}</tagNameFormat> 
             <autoVersionSubmodules>true</autoVersionSubmodules>
 			<pushChanges>false</pushChanges>
-			<localCheckout>true</localCheckout>
           </configuration>
         </plugin>
 		
