@@ -70,6 +70,12 @@
               <checkModificationExclude>
                 target/*
               </checkModificationExclude>
+			  <checkModificationExclude>
+               target/maven-archiver/*
+              </checkModificationExclude>
+			  <checkModificationExclude>
+                target/test__nexus_project/*
+              </checkModificationExclude>
             </checkModificationExcludes>
           </configuration>
         </plugin>
