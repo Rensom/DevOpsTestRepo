@@ -1,0 +1,21 @@
+name: TestWeird
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Where to deploy
+        options: 
+        - test
+        - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event_name }}"
+      - run: echo "${{ github.event }}"
