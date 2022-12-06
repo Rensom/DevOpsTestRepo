@@ -19,3 +19,13 @@ jobs:
     steps:
       - run: echo "${{ github.event_name }}"
       - run: echo "${{ github.event }}"
+      - run: |
+          if [ "${{ github.event_name }}" == "push" ]; then || [ "${{ github.event.inputs.environment }}" == "test" ]; then 
+            echo "TAG_PREFIX=stg" >> $GITHUB_ENV
+          elif [ "${{ github.event.inputs.environment }}" == "production" ];  then
+            echo "TAG_PREFIX=prd" >> $GITHUB_ENV
+          else
+            echo "TAG_PREFIX=stg" >> $GITHUB_ENV
+          fi
+          echo "test - ${{ env.TAG_PREFIX }}"
+      - run: echo "test2 - ${{ env.TAG_PREFIX }}"
