@@ -30,3 +30,11 @@ jobs:
           echo "test - ${{ env.TAG_PREFIX }}"
       - run: echo "test2 - ${{ env.TAG_PREFIX }}"
       - run: docker -v
+  
+  build:
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker -v
+      - run: docker build -t e:t .
