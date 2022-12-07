@@ -29,3 +29,4 @@ jobs:
           fi
           echo "test - ${{ env.TAG_PREFIX }}"
       - run: echo "test2 - ${{ env.TAG_PREFIX }}"
+      - run: docker -v
