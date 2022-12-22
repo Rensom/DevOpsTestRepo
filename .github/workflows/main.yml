@@ -33,7 +33,7 @@ jobs:
   
   build:
     needs: test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: docker -v
