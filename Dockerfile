@@ -1,4 +1,4 @@
-FROM ubuntu/apache2:latest
+FROM ubuntu/apache2:2.4-20.04_edge
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
