@@ -2,8 +2,9 @@ FROM ubuntu/apache2:latest
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
-    #add-apt-repository ppa:ondrej/php && \
-    add-apt-repository ppa:ondrej/apache2 && \
+    add-apt-repository ppa:ondrej/php && \
+    sed -i 's/[[:space:]]*$//' /etc/apt/sources.list && \
+    #add-apt-repository ppa:ondrej/apache2 && \
     apt-get update && \
     apt-get install -y \
     libapache2-mod-php7.1 \
