@@ -1,0 +1,28 @@
+name: PR Test
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - master 
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+    
+jobs:
+
+  main:
+    name: Build Docker image and create Octopus Release
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event.pull_request.merged }} || ${{ github.event_name }} == "push" || ${{ github.event_name }} == "workflow_dispatch"
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+      - name: Testing stuff
+        run: |
+          echo "${{ github.event_name }}"
