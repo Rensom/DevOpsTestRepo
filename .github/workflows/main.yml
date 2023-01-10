@@ -21,6 +21,7 @@ jobs:
         run: doctl registry login
       - run: docker -v
       - run: docker build -t registry.digitalocean.com/ifood/rt_test:${{ github.sha }} .
+      - run: docker push registry.digitalocean.com/ifood/rt_test:${{ github.sha }}
       - name: Create a release in Octopus Deploy 🐙
         uses: OctopusDeploy/create-release-action@v3
         with:
