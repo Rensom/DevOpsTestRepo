@@ -1,40 +1,29 @@
 name: TestWeird
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        description: Where to deploy
-        options: 
-        - test
-        - production
+
+env:
+  OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: "Default"
 
 jobs:
-  test:
-    runs-on: ubuntu-20.04
-    steps:
-      - run: echo "${{ github.event_name }}"
-      - run: echo "${{ github.event }}"
-      - run: |
-          if [ "${{ github.event_name }}" == "push" ] || [ "${{ github.event.inputs.environment }}" == "test" ]; then 
-            echo "TAG_PREFIX=stg" >> $GITHUB_ENV
-          elif [ "${{ github.event.inputs.environment }}" == "production" ];  then
-            echo "TAG_PREFIX=prd" >> $GITHUB_ENV
-          else
-            echo "TAG_PREFIX=stg" >> $GITHUB_ENV
-          fi
-          echo "test - ${{ env.TAG_PREFIX }}"
-      - run: echo "test2 - ${{ env.TAG_PREFIX }}"
-      - run: docker -v
-  
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install doctl tool
+        uses: digitalocean/action-doctl@v2.1.0
+        with:
+          token:  ${{ secrets.DO_TOKEN }}
+      - name: Log in DO registry
+        run: doctl registry login
       - run: docker -v
-      - run: docker build -t e:t .
+      - run: docker build -t registry.digitalocean.com/ifood/rt_test:${{ github.sha }} .
+      - name: Create a release in Octopus Deploy 🐙
+        uses: OctopusDeploy/create-release-action@v3
+        with:
+          project: 'test'
+          packages: '*:rt_test:${{ github.sha }}'
