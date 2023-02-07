@@ -1,4 +1,4 @@
-name: TestWeird
+name: This is a long naming for the workflow
 
 on:
   workflow_dispatch:
