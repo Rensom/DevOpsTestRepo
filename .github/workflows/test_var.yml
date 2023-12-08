@@ -32,7 +32,6 @@ jobs:
       - name: Test
         run: | 
             echo 'with env - ${{ env.CLIENT_CHANNEL }} ---- '
-            echo 'without env - ${{ CLIENT_CHANNEL }} ----'
       - name: End
         run: |
           echo "Proceed to Octopus Dashboard to check the deployment status"
