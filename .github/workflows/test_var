@@ -1,0 +1,38 @@
+name: EnvVarTest
+
+on: 
+  workflow_dispatch:
+    inputs:
+      client:
+        type: choice
+        description: Client
+        options: 
+          - market
+          - hare
+          - roomservice
+
+env:
+  TAG_REPO: "europe-west4-docker.pkg.dev/dely-io/market-ui/react-storefront"
+  OCTOPUS_SPACE: "Default"
+
+jobs:
+  main:
+    name: Build Docker image and create Octopus Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v3
+      - name: Adjust channel name
+        id: client-selector
+        run: |
+          tmp=${{ github.event.inputs.client }}
+          tmp="$(tr '[:lower:]' '[:upper:]' <<< ${tmp:0:1})${tmp:1}"
+          echo "CLIENT_CHANNEL=$tmp" >> "$GITHUB_ENV"
+      - name: Test
+        run: | 
+            echo 'with env - ${{ env.CLIENT_CHANNEL }} ---- '
+            echo 'without env - ${{ CLIENT_CHANNEL }} ----'
+      - name: End
+        run: |
+          echo "Proceed to Octopus Dashboard to check the deployment status"
