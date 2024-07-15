@@ -22,6 +22,6 @@ jobs:
           if [[ -z "${{ inputs.secret_version }}" ]]; then
             SECRET_VERSION = $SECRET_DEFAULT_VERSION
           else
-            SECRET_VERION = ${{ inputs.secrets_version }}
+            SECRET_VERION = "${{ inputs.secrets_version }}"
           fi
           echo "SECRET VERSION = $SECRET_VERSION"
