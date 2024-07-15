@@ -20,4 +20,4 @@ jobs:
       - name: checks
         run: |
           echo "$SECRET_VERSION  --- VARS"
-          echo "${ inputs.secret_version }  -- inputs"
+          echo "${{ inputs.secret_version }}  -- inputs"
