@@ -1,29 +1,23 @@
 name: This is a long naming for the workflow
 
 on:
+  push:
   workflow_dispatch:
-
+    inputs:
+      secret_version:
+          description: 'Secret version'
+          default: '10'
+          required: true
+    
 env:
-  OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY  }}
-  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
-  OCTOPUS_SPACE: "Default"
+  SECRET_VERSION: 9
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install doctl tool
-        uses: digitalocean/action-doctl@v2.1.0
-        with:
-          token:  ${{ secrets.DO_TOKEN }}
-      - name: Log in DO registry
-        run: doctl registry login
-      - run: docker -v
-      - run: docker build -t registry.digitalocean.com/ifood/rt_test:${{ github.sha }} .
-      - run: docker push registry.digitalocean.com/ifood/rt_test:${{ github.sha }}
-      - name: Create a release in Octopus Deploy 🐙
-        uses: OctopusDeploy/create-release-action@v3
-        with:
-          project: 'test'
-          packages: '*:rt_test:${{ github.sha }}'
+      - name: checks
+        run: |
+          echo "$SECRET_VERSION  --- VARS"
+          echo "${ inputs.secret_version }  -- inputs"
