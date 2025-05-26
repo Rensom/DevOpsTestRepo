@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Get beta vars
-	if: contains(github.ref, 'beta')
-	run: |
-	  echo "Getting env vars for beta..."
+        if: contains(github.ref, 'beta')
+        run: |
+          echo "Getting env vars for beta..."
       - name: Get Prod vars
-	if:  !contains(github.ref, 'beta')
-	run: |
-	  echo "Getting prod vars"   
+	      if: !contains(github.ref, 'beta')
+	      run: |
+          echo "Getting prod vars"   
